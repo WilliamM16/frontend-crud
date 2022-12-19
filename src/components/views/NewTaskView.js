@@ -23,8 +23,8 @@ const NewTaskView = (props) => {
           <br/>
           <br/>
 
-          <label style={{color:'#11153e', fontWeight: 'bold'}}>EmployeeId: </label>
-          <input type="text" name="employeeId" onChange={(e) => handleChange(e)} />
+          <label style={{color:'#11153e', fontWeight: 'bold'}}>CompletionStatus: </label>
+          <input type="text" name="completionstatus" onChange={(e) => handleChange(e)} />
           <br/>
           <br/>
 
