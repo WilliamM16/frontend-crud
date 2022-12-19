@@ -28,7 +28,7 @@ class NewTaskContainer extends Component {
 
     handleSubmit = async event => {
         event.preventDefault();
-        //dont need ID because the course has not been created yet
+        //dont need ID because the task has not been created yet
         if(this.state.description===""){
           this.setState({error:"Title field is required"});
           return;
@@ -51,10 +51,10 @@ class NewTaskContainer extends Component {
 
     handleSelectChange = event => {
       //handle change for the dropdown menu
-      //want to set the instructorId based on the selected choice
+      //want to set the employeeId based on the selected choice
       //when the form gets submitted, this is how we can change
-      //assigned instructor without having to manually enter in the 
-      //instructorId like before
+      //assigned employee without having to manually enter in the 
+      //employeeId like before
       if (event.target.value === "staff") {
         this.setState({employeeId:null});
       } else {
@@ -67,7 +67,7 @@ class NewTaskContainer extends Component {
     }
 
     render() {
-      //go to single course view of newly created course
+      //go to single task view of newly created task
         if(this.state.redirect) {
           return (<Redirect to={`/task/${this.state.redirectId}`}/>)
         }

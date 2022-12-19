@@ -28,7 +28,7 @@ class NewEmployeeContainer extends Component {
 
     handleSubmit = async event => {
         event.preventDefault();
-        //dont need ID because the course has not been created yet
+        //dont need ID because the employee has not been created yet
         if(this.state.firstname ===""){
           this.setState({error:"First Name is required"});
           return;
@@ -53,7 +53,7 @@ class NewEmployeeContainer extends Component {
     }
 
     render() {
-      //go to single course view of newly created course
+      //go to single employee view of newly created employee
         if(this.state.redirect) {
           return (<Redirect to={`/employee/${this.state.redirectId}`}/>)
         }

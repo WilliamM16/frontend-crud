@@ -1,6 +1,6 @@
 import { Component } from 'react';
 import { connect } from 'react-redux';
-
+import PropTypes from 'prop-types';
 
 import { 
   fetchAllTasksThunk,
@@ -38,6 +38,11 @@ const mapDispatch = (dispatch) => {
     fetchAllTasks: () => dispatch(fetchAllTasksThunk()),
     deleteTask: (taskId) => dispatch(deleteTaskThunk(taskId)),
   };
+};
+
+AllTasksContainer.propTypes = {
+  allTasks: PropTypes.array.isRequired,
+  fetchAllTasks: PropTypes.func.isRequired,
 };
 
 export default connect(mapState, mapDispatch)(AllTasksContainer);

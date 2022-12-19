@@ -13,14 +13,12 @@ class EditEmployeeContainer extends Component {
           lastname: "",
           department: "",
           taskId: null, 
-          redirect: false, 
-          redirectId: null,
           error: ""
         };
     }
 
     componentDidMount() {
-        //getting course ID from url
+        //getting employee ID from url
         this.props.fetchEmployee(this.props.match.params.id);
         this.props.fetchTasks();
         this.setState({
@@ -38,11 +36,6 @@ class EditEmployeeContainer extends Component {
     }
 
     handleSelectChange = event => {
-      //handle change for the dropdown menu
-      //want to set the instructorId based on the selected choice
-      //when the form gets submitted, this is how we can change
-      //assigned instructor without having to manually enter in the 
-      //instructorId like before
       if (event.target.value === "staff") {
         this.setState({taskId:null});
       } else {
@@ -53,12 +46,12 @@ class EditEmployeeContainer extends Component {
     handleSubmit = event => {
         event.preventDefault();
         //implementing form validation
-        if (this.state.description === "") {
+        if (this.state.firstname === "") {
           this.setState({error: "Error: description cannot be empty"});
           return;
         }
 
-        //get new info for course from form input
+        //get new info for employee from form input
         let employee = {
             id: this.props.employee.id,
             firstname: this.state.firstname,
@@ -87,7 +80,7 @@ class EditEmployeeContainer extends Component {
 
         let otherTasks = allTasks.filter(task => task.id!==assignedTask);
       
-        //go to single course view of the edited course
+        //go to single employee view of the edited employee
         if(this.state.redirect) {
           return (<Redirect to={`/employee/${this.state.redirectId}`}/>)
         }

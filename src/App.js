@@ -25,7 +25,7 @@ import {
 const App = () => {
   return (
     <div className="App">
-      <Navbar bg="dark" variant="dark">
+      <Navbar>
         <Container>
           <Nav className="me-auto">
             <Nav.Link as={Link} to ="/">Home </Nav.Link>
