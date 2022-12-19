@@ -35,8 +35,8 @@ class NewTaskContainer extends Component {
         }
         let task = {
             description: this.state.description,
-            prioritylevel: this.state.timeslot,
-            completionstatus: this.state.location,
+            prioritylevel: this.state.prioritylevel,
+            completionstatus: this.state.completionstatus,
             employeeId: this.state.employeeId
         };
         
@@ -47,6 +47,19 @@ class NewTaskContainer extends Component {
           redirectId: newTask.id,
           error: ""
         });
+    }
+
+    handleSelectChange = event => {
+      //handle change for the dropdown menu
+      //want to set the instructorId based on the selected choice
+      //when the form gets submitted, this is how we can change
+      //assigned instructor without having to manually enter in the 
+      //instructorId like before
+      if (event.target.value === "staff") {
+        this.setState({employeeId:null});
+      } else {
+        this.setState({employeeId: event.target.value})
+      }
     }
 
     componentWillUnmount() {

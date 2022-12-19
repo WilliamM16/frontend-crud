@@ -59,7 +59,7 @@ class EditTaskContainer extends Component {
         this.setState({
             description: this.props.task.description, 
             prioritylevel: this.props.task.prioritylevel,
-            completionstatus: this.props.completionstatus,
+            completionstatus: this.props.task.completionstatus,
             employeeId: this.props.task.employeeId, 
         });
       }
@@ -161,25 +161,12 @@ class EditTaskContainer extends Component {
           { this.state.error !=="" && <p>{this.state.error}</p> }
 
           {task.employeeId !== null ?
-            <div> Current instructor:  
+            <div> Current employee:  
             <Link to={`/employee/${task.employeeId}`}>{task.employee.firstname}</Link>
             <button onClick={async () => {await editTask({id:task.id, employeeId: null});  fetchTask(task.id)}}>Unassign</button>
             </div>
-            : <div> No instructor currently assigned </div>
-          }
-
-          <div> Other instructors
-          {otherEmployees.map(employee => {
-            return (
-            <div key={employee.id}>
-                <Link to={`/employee/${employee.id}`}>
-                  <h4>{employee.firstname}</h4>
-                </Link>
-                <button onClick={async() => {await editTask({id:task.id, employeeId: employee.id}); fetchTask(task.id)}}>Assign this instructor</button>
-            </div>
-            )})
-          }
-          </div>
+            : <div> No Employee currently assigned </div>
+          }          
         </div>
         )
     }

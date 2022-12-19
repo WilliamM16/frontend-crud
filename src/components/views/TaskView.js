@@ -11,8 +11,6 @@ const TaskView = (props) => {
       <br/>
       <Link to={`/edittask/${task.id}`}>Edit task information</Link>
       <br/>
-      <button onClick={() => deleteTask(task.id)}>Delete</button>
-      <br/>
       <Link to={`/tasks`}>View all tasks</Link>
     </div>
   );
