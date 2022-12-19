@@ -6,55 +6,55 @@ import * as at from './actionTypes';
  */
 
 // All instructors
-export const fetchAllEmployees = (employees) => {
+export const fetchAllInstructors = (instructors) => {
   return {
-    type: at.FETCH_ALL_EMPLOYEES,
-    payload: employees,
+    type: at.FETCH_ALL_INSTRUCTORS,
+    payload: instructors,
   };
 };
 
 //Single instructor
-export const fetchEmployee = (employee) => {
+export const fetchInstructor = (instructor) => {
   return {
-    type: at.FETCH_EMPLOYEE,
-    payload: employee,
+    type: at.FETCH_INSTRUCTOR,
+    payload: instructor,
   };
 };
 
 //All courses
-export const fetchAllTasks = (tasks) => {
+export const fetchAllCourses = (courses) => {
   return {
-    type: at.FETCH_ALL_TASKS,
-    payload: tasks,
+    type: at.FETCH_ALL_COURSES,
+    payload: courses,
   };
 };
 
-export const addTask = (task) => {
+export const addCourse = (course) => {
   return {
-    type: at.ADD_TASK,
-    payload: task,
+    type: at.ADD_COURSE,
+    payload: course,
   };
 };
 
-export const deleteTask = (taskId) => {
+export const deleteCourse = (courseId) => {
   return {
-    type: at.DELETE_TASK,
-    payload: taskId,
+    type: at.DELETE_COURSE,
+    payload: courseId,
   };
 };
 
 
-export const editTask = (task) => {
+export const editCourse = (course) => {
   return {
-    type: at.EDIT_TASK,
-    payload: task,
+    type: at.EDIT_COURSE,
+    payload: course,
   };
 };
 
 //Single course
-export const fetchTask = (task) => {
+export const fetchCourse = (course) => {
   return {
-    type: at.FETCH_TASK,
-    payload: task,
+    type: at.FETCH_COURSE,
+    payload: course,
   };
 };
