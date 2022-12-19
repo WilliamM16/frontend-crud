@@ -35,6 +35,13 @@ export const editEmployee = (employee) => {
   };
 };
 
+export const deleteEmployee = (employeeId) => {
+  return {
+    type: at.DELETE_EMPLOYEE,
+    payload: employeeId,
+  };
+};
+
 
 //All courses
 export const fetchAllTasks = (tasks) => {

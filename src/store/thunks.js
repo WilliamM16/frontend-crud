@@ -53,6 +53,16 @@ export const editEmployeeThunk = employee => async dispatch => {
   }
 };
 
+export const deleteEmployeeThunk = employeeId => async dispatch => {
+  try {
+    await axios.delete(`${path}/employees/${employeeId}`);
+    //delete succesful so change state with dispatch
+    dispatch(ac.deleteEmployee(employeeId));
+  } catch(err) {
+    console.error(err);
+  }
+};
+
 //All courses
 export const fetchAllTasksThunk = () => async (dispatch) => {
   try {
