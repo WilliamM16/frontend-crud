@@ -12,7 +12,6 @@ class EditEmployeeContainer extends Component {
           firstname: "", 
           lastname: "",
           department: "",
-          taskId: null, 
           error: ""
         };
     }
@@ -36,6 +35,11 @@ class EditEmployeeContainer extends Component {
     }
 
     handleSelectChange = event => {
+      //handle change for the dropdown menu
+      //want to set the instructorId based on the selected choice
+      //when the form gets submitted, this is how we can change
+      //assigned instructor without having to manually enter in the 
+      //instructorId like before
       if (event.target.value === "staff") {
         this.setState({taskId:null});
       } else {
@@ -51,7 +55,7 @@ class EditEmployeeContainer extends Component {
           return;
         }
 
-        //get new info for employee from form input
+        //get new info for course from form input
         let employee = {
             id: this.props.employee.id,
             firstname: this.state.firstname,
@@ -75,12 +79,12 @@ class EditEmployeeContainer extends Component {
     }
 
     render() {
-        let { employee, allTasks, editEmployee, fetchEmployee} = this.props;
+        let { employee, allTasks} = this.props;
         let assignedTask = employee.taskId;
 
         let otherTasks = allTasks.filter(task => task.id!==assignedTask);
       
-        //go to single employee view of the edited employee
+        //go to single course view of the edited course
         if(this.state.redirect) {
           return (<Redirect to={`/employee/${this.state.redirectId}`}/>)
         }
@@ -88,45 +92,24 @@ class EditEmployeeContainer extends Component {
         return (
         <div>
         <form style={{textAlign: 'center'}} onSubmit={(e) => this.handleSubmit(e)}>
-            <label style= {{color:'#11153e', fontWeight: 'bold'}}>Description: </label>
+            <label style= {{color:'#11153e', fontWeight: 'bold'}}>First Name: </label>
             <input type="text" name="firstname" value={this.state.firstname || ''} placeholder={employee.firstname} onChange ={(e) => this.handleChange(e)}/>
             <br/>
 
-            <label style={{color:'#11153e', fontWeight: 'bold'}}>PriorityLevel: </label>
+            <label style={{color:'#11153e', fontWeight: 'bold'}}>Last Name: </label>
             <input type="text" name="lastname" value={this.state.lastname || ''} placeholder={employee.lastname} onChange={(e) => this.handleChange(e)}/>
             <br/>
 
-            <label style={{color:'#11153e', fontWeight: 'bold'}}>CompletionStatus: </label>
+            <label style={{color:'#11153e', fontWeight: 'bold'}}>Department: </label>
             <input type="text" name="department" value={this.state.department || ''} placeholder={employee.department} onChange={(e) => this.handleChange(e)}/>
             <br/>
 
-            <select onChange={(e) => this.handleSelectChange(e)}>
-              {employee.task!==null ?
-                <option value={employee.taskId}>{employee.task.description+" (current)"}</option>
-              : <option value="staff">Staff</option>
-              }
-              {otherTasks.map(task => {
-                return (
-                  <option value={task.id} key={task.id}>{task.description}</option>
-                )
-              })}
-              {employee.task!==null && <option value="staff">Staff</option>}
-            </select>
-  
             <button type="submit">
               Submit
             </button>
 
           </form>
-          { this.state.error !=="" && <p>{this.state.error}</p> }
-
-          {employee.taskId !== null ?
-            <div> Current task:  
-            <Link to={`/task/${employee.taskId}`}>{employee.task.description}</Link>
-            <button onClick={async () => {await editEmployee({id:employee.id, taskId: null});  fetchEmployee(employee.id)}}>Unassign</button>
-            </div>
-            : <div> No task currently assigned </div>
-          }          
+          
         </div>
         )
     }

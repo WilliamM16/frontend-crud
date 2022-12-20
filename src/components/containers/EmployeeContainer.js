@@ -12,7 +12,6 @@ class EmployeeContainer extends Component {
   componentDidMount() {
     //getting employee ID from url
     this.props.fetchEmployee(this.props.match.params.id);
-    this.props.fetchEmployee();
   }
 
   render() {
