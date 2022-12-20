@@ -80,7 +80,7 @@ class EditTaskContainer extends Component {
     }
 
     render() {
-        let { task, allEmployees, editTask, fetchTask} = this.props;
+        let { task, allEmployees} = this.props;
         let assignedEmployee = task.employeeId;
 
         let otherEmployees = allEmployees.filter(employee => employee.id!==assignedEmployee);
